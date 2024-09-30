@@ -1,0 +1,46 @@
+
+ROM used:   142/31936 (0%)
+            142/31936 (0%) including unused fragments
+
+            0.2 Average locations per line
+            10.9 Average locations per statement
+
+RAM used:   5/2036 (0%) at main() level
+            6/2036 (0%) worst case
+
+Stack used: 1 worst case (1 in main + 0 for interrupts)
+Stack size: 30
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   19    13 100  ask1.c
+   69     0   0  main-proteus.h
+  821     0   0  C:\Program Files\PICC\Devices\18F4550.h
+----- -----
+  909    13 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     44  15    1             @delay_ms1
+0     94  33    1   253  2.3  main
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               1
+    Statements              13
+    Comments                168
+    Volume (V)              257
+    Difficulty (D)          2.1
+    Effort to implement (E) 551
+    Time to implement (T)   1 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    147
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-07CBE   138  31794  
+
+
+

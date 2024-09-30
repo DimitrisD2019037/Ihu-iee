@@ -1,0 +1,311 @@
+CCS PCH C Compiler, Version 5.011, 5967               24-Ã·˙-23 14:49
+
+               Filename:   E:\MIKRO-II\t8\ask6_2.lst
+
+               ROM used:   358 bytes (1%)
+                           Largest free fragment is 30358
+               RAM used:   34 (2%) at main() level
+                           35 (2%) worst case
+               Stack used: 2 locations (1 in main + 1 for interrupts)
+               Stack size: 31
+
+*
+0800:  GOTO   092C
+*
+0808:  NOP   
+080A:  NOP   
+080C:  NOP   
+080E:  NOP   
+0810:  NOP   
+0812:  NOP   
+0814:  NOP   
+0816:  NOP   
+0818:  MOVWF  04
+081A:  MOVFF  FD8,05
+081E:  MOVFF  FE0,06
+0822:  MOVLB  0
+0824:  MOVFF  FE9,0C
+0828:  MOVFF  FEA,07
+082C:  MOVFF  FE1,08
+0830:  MOVFF  FE2,09
+0834:  MOVFF  FD9,0A
+0838:  MOVFF  FDA,0B
+083C:  MOVFF  FF3,12
+0840:  MOVFF  FF4,13
+0844:  MOVFF  FFA,14
+0848:  MOVFF  00,0E
+084C:  MOVFF  01,0F
+0850:  MOVFF  02,10
+0854:  MOVFF  03,11
+0858:  BTFSS  FF2.5
+085A:  GOTO   0864
+085E:  BTFSC  FF2.2
+0860:  GOTO   08A6
+0864:  MOVFF  0E,00
+0868:  MOVFF  0F,01
+086C:  MOVFF  10,02
+0870:  MOVFF  11,03
+0874:  MOVFF  0C,FE9
+0878:  MOVFF  07,FEA
+087C:  BSF    07.7
+087E:  MOVFF  08,FE1
+0882:  MOVFF  09,FE2
+0886:  MOVFF  0A,FD9
+088A:  MOVFF  0B,FDA
+088E:  MOVFF  12,FF3
+0892:  MOVFF  13,FF4
+0896:  MOVFF  14,FFA
+089A:  MOVF   04,W
+089C:  MOVFF  06,FE0
+08A0:  MOVFF  05,FD8
+08A4:  RETFIE 0
+.................... #include <main.h> 
+.................... #include <18F4550.h> 
+.................... //////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... #device PIC18F4550 
+....................  
+.................... #list 
+....................  
+.................... #DEVICE HIGH_INTS=TRUE 
+.................... #device adc=10 
+....................  
+.................... #FUSES NOWDT                     //No Watch Dog Timer 
+.................... #FUSES WDT32768                    //Watch Dog Timer uses 1:128 Postscale 
+.................... #FUSES HSPLL                     //High Speed Crystal/Resonator with PLL enabled 
+.................... #FUSES NOPROTECT                 //Code not protected from reading 
+.................... #FUSES BROWNOUT                //No brownout reset 
+.................... //#FUSES BORV20                    //Brownout reset at 2.0V 
+.................... #FUSES NOPUT                     //No Power Up Timer 
+.................... #FUSES NOCPD                     //No EE protection 
+.................... #FUSES STVREN                    //Stack full/underflow will cause reset 
+.................... #FUSES NODEBUG                   //No Debug mode for ICD 
+.................... #FUSES NOLVP                     //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+.................... #FUSES NOWRT                     //Program memory not write protected 
+.................... #FUSES NOWRTD                    //Data EEPROM not write protected 
+.................... #FUSES NOIESO                      //Internal External Switch Over mode enabled 
+.................... #FUSES NOFCMEN                     //Fail-safe clock monitor enabled 
+.................... #FUSES NOPBADEN                 ///PORTB pins are configured as analog input channels on RESET 
+.................... #FUSES NOWRTC                    //configuration not registers write protected 
+.................... #FUSES NOWRTB                    //Boot block not write protected 
+.................... #FUSES NOEBTR                    //Memory not protected from table reads 
+.................... #FUSES NOEBTRB                   //Boot block not protected from table reads 
+.................... #FUSES NOCPB                     //No Boot Block code protection 
+.................... #FUSES MCLR                      //Master Clear pin enabled 
+.................... #FUSES NOLPT1OSC                   //Timer1 configured for low-power operation 
+.................... #FUSES NOXINST                   //Extended set extension and Indexed Addressing mode disabled (Legacy mode) 
+.................... #FUSES PLL5                      //Divide By 12(48MHz oscillator input) 
+.................... #FUSES CPUDIV1                   //System Clock by 2 
+.................... #FUSES USBDIV                    //USB clock source comes from PLL divide by 2 
+.................... #FUSES VREGEN                    //USB voltage regulator enabled 
+.................... #FUSES ICPRT                     //ICPRT enabled 
+.................... #FUSES WRTB 
+.................... #FUSES NOICPRT  
+.................... #FUSES NOLPT1OSC 
+.................... #FUSES CCP2B3  
+.................... #FUSES NOCPB 
+.................... #FUSES NOCPD 
+.................... #FUSES NOWRTC 
+.................... #FUSES NOWRTD 
+.................... #FUSES NOEBTR 
+.................... #FUSES NOEBTRB               
+....................  
+.................... /* systm clock is 48 MHz */ 
+.................... #use delay(clock=48000000,RESTART_WDT) 
+.................... /* --- BEGIN: changes required for bootloader ------------------------------ */ 
+....................  
+.................... /* ------------------------------------------------------------------------- */ 
+.................... /* map reset vector and interrupt vector                                     */ 
+.................... /* 0x000-0x7FF is used by the bootloader. The bootloader maps the original   */ 
+.................... /* reset vecotr (0x000) to 0x800 and the reset vector (0x008) to 0x800.      */ 
+.................... /* ------------------------------------------------------------------------- */ 
+.................... #build (reset=0x800, interrupt=0x808) 
+....................  
+.................... /* ------------------------------------------------------------------------- */ 
+.................... /* reserve boot block area                                                   */ 
+.................... /* This memory range is used by the bootloader, so the application must not  */ 
+.................... /* use this area.                                                            */ 
+.................... /* ------------------------------------------------------------------------- */ 
+.................... #org 0, 0x7FF {} 
+....................  
+.................... /* --- END: changes required for bootloader -------------------------------- */ 
+....................  
+....................  
+....................  
+....................  
+....................  
+.................... #byte PORTB=0xF81                                                                
+....................  
+.................... //d???se?? s??a?t?se?? 
+.................... void init (void);                        
+.................... void timer0_int(void);          
+.................... //s????t?s? p?? µe ???s? Timer0 ?a µet??e? 100µs 
+.................... void mydelay_100us(int);   
+....................  
+.................... int32 counter_time=0;                                                             
+.................... //????s? µetaﬂ??t?? ??a µ?t??s? t?? d?a??p??. 
+.................... //St? µetaﬂ??t? a?t? d??eta? ? a????? t?µ? 0. 
+.................... //Ta a????eta? ?at? 1 ???e 100 µs 
+.................... int32 counter_time_old=0;                                                         
+.................... //?etaﬂ??t? p?? ???s?µ?p??e?ta? st?? a?t?s??d?a ???t??a ?a??st???s??. 
+.................... int32 aaa=1;                                                                        
+.................... // a???a?? µetaﬂ??t? p?? ???s?µ?p??e?ta? sa? ???sµa st?? 
+.................... //a?t?s??d?a ???t??a ?a??st???s?? 
+....................  
+.................... // ????? p????aµµa 
+.................... void main(){                              
+*
+092C:  CLRF   FF8
+092E:  BCF    FF1.2
+0930:  BSF    FD0.7
+0932:  BSF    07.7
+0934:  CLRF   19
+0936:  CLRF   18
+0938:  CLRF   17
+093A:  CLRF   16
+093C:  CLRF   1D
+093E:  CLRF   1C
+0940:  CLRF   1B
+0942:  CLRF   1A
+0944:  CLRF   21
+0946:  CLRF   20
+0948:  CLRF   1F
+094A:  MOVLW  01
+094C:  MOVWF  1E
+094E:  MOVF   FC1,W
+0950:  ANDLW  C0
+0952:  IORLW  0F
+0954:  MOVWF  FC1
+0956:  MOVLW  07
+0958:  MOVWF  FB4
+....................    init();     // ???s? t?? ???t??a? t?? a?????? ???µ?se?? 
+095A:  BRA    08C4
+....................    while (TRUE){ 
+....................       PORTB=PORTB^0b11111111; 
+095C:  MOVLW  FF
+095E:  XORWF  F81,F
+....................       mydelay_100us(500);   
+0960:  MOVLW  F4
+0962:  MOVWF  22
+0964:  BRA    08E0
+0966:  BRA    095C
+....................       //?a??st???s? 500?100µs=50 000 µs= 50 ms 
+....................    }                               
+.................... } 
+....................  
+....................  
+.................... // ???? ???t??a? e??p???t?s?? t?? d?a??p?? 
+.................... #INT_TIMER0                      
+.................... void timer0_int(void) { 
+0968:  SLEEP 
+....................    set_timer0(64336);                                                                
+*
+08A6:  MOVLW  FB
+08A8:  MOVWF  FD7
+08AA:  MOVLW  50
+08AC:  MOVWF  FD6
+....................    //a????? t?µ? t?? timer0 ?ste ? ep?µe?? d?a??p? ?a s?µﬂe? se 
+....................    // ????? ?s? µe 100 µs 
+....................    counter_time++;                                                                   
+08AE:  MOVLW  01
+08B0:  ADDWF  16,F
+08B2:  BTFSC  FD8.0
+08B4:  INCF   17,F
+08B6:  BTFSC  FD8.2
+08B8:  INCF   18,F
+08BA:  BTFSC  FD8.2
+08BC:  INCF   19,F
+....................    // O µet??t?? d?a??p?? a????eta? ?at? 1 ???e 100 µs 
+....................    //  ???s?µ?p??e?ta? ??a ?a µet??µe ?a??st???s? se 
+....................    // p???ap??s?a t?? 100 µs 
+08BE:  BCF    FF2.2
+08C0:  GOTO   0864
+.................... } 
+....................  
+....................  
+.................... // ???? ???t??a? a?????? ???µ?se?? 
+.................... void init (void) {        
+....................    SETUP_TIMER_0(T0_INTERNAL | T0_DIV_1 );                                          
+08C4:  MOVLW  88
+08C6:  MOVWF  FD5
+....................    // ???µ?s? t?? p????aµµat???µe??? d?a???t?(prescaler) st?? t?µ? 1 
+....................    set_timer0(64336);                                                               
+08C8:  MOVLW  FB
+08CA:  MOVWF  FD7
+08CC:  MOVLW  50
+08CE:  MOVWF  FD6
+....................    //  ?????? t?µ? t?? timer0 ?ste ?a s?µﬂa????? d?a??p?? ???e 100 µs  
+....................    enable_interrupts(INT_TIMER0);                                                   
+08D0:  BSF    FF2.5
+....................    // ??e???p???s? t?? d?a??p?? ap? t?? timer0 
+....................    enable_interrupts(GLOBAL);                                                       
+08D2:  MOVLW  C0
+08D4:  IORWF  FF2,F
+....................    // ??e???p???s? t?? ?e????? d?a??pt? t?? d?a??p?? 
+....................  
+....................    set_tris_b(0x00);           
+08D6:  MOVLW  00
+08D8:  MOVWF  F93
+....................    PORTB=0x00;                                                                 
+08DA:  CLRF   F81
+08DC:  GOTO   095C (RETURN)
+.................... } 
+....................  
+.................... //??d??a?  ???t??a? ?a??st???s?? aaax100µs  
+.................... void mydelay_100us(aaa){ 
+....................    counter_time_old=counter_time;                                                   
+08E0:  MOVFF  19,1D
+08E4:  MOVFF  18,1C
+08E8:  MOVFF  17,1B
+08EC:  MOVFF  16,1A
+....................    // O counter_time_old pa???e? t?? t?µ? t?? ?????? 
+....................    // t?? st??µ? p?? µpa????µe st?? ???t??a 
+....................    while(counter_time < counter_time_old+aaa) {  } 
+08F0:  MOVF   22,W
+08F2:  ADDWF  1A,W
+08F4:  MOVWF  00
+08F6:  MOVLW  00
+08F8:  ADDWFC 1B,W
+08FA:  MOVWF  01
+08FC:  MOVLW  00
+08FE:  ADDWFC 1C,W
+0900:  MOVWF  02
+0902:  MOVLW  00
+0904:  ADDWFC 1D,W
+0906:  MOVWF  03
+0908:  MOVF   19,W
+090A:  SUBWF  03,W
+090C:  BNC   0928
+090E:  BNZ   0926
+0910:  MOVF   18,W
+0912:  SUBWF  02,W
+0914:  BNC   0928
+0916:  BNZ   0926
+0918:  MOVF   17,W
+091A:  SUBWF  01,W
+091C:  BNC   0928
+091E:  BNZ   0926
+0920:  MOVF   00,W
+0922:  SUBWF  16,W
+0924:  BTFSS  FD8.0
+0926:  BRA    08F0
+0928:  GOTO   0966 (RETURN)
+....................    //??aµ??? ??? ?t?? ? µet??t?? ?????? ft?se? 
+....................    // t?? t?µ? t?? ?????? t? st??µ? p?? µpa????µe st?? ???t??a + aaa 
+.................... }  
+....................  
+....................  
+....................  
+....................  
+....................  
+....................  
+....................  
+....................  
+
+Configuration Fuses:
+   Word  1: 0E24   PLL5 CPUDIV1 USBDIV HSPLL NOFCMEN NOIESO
+   Word  2: 1E3F   NOPUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8000   CCP2B3 NOPBADEN NOLPT1OSC MCLR
+   Word  4: 0081   STVREN NOLVP ICSP1 NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: A00F   NOWRT NOWRTC WRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

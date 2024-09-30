@@ -1,0 +1,6 @@
+ÀÄask6_2
+   ÃÄmain  0/62  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄinit  0/28  Ram=0
+   ³  ÀÄmydelay_100us  0/76  Ram=1
+   ÀÄtimer0_int  0/30  Ram=0

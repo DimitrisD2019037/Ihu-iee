@@ -1,0 +1,25 @@
+pwm_set_duty_percent" 2 732 "void(int8 stream,int16 percent)" `578 
+v L "frequency" 2 733 "int32" `582 
+f B "pwm_set_frequency" 2 733 "void(int32 frequency)" `581 
+v L "stream" 2 734 "int8" `584 
+v L "frequency" 2 734 "int32" `585 
+f G "pwm_set_frequency" 2 734 "void(int8 stream,int32 frequency)" `583  "#use capture() Prototypes:"
+f B "get_capture_time" 2 737 "int16()" `586 
+v L "stream" 2 738 "int8" `588 
+f G "get_capture_time" 2 738 "int16(int8 stream)" `587 
+f B "get_capture_event" 2 739 "int8()" `589 
+v L "stream" 2 740 "int8" `591 
+f G "get_capture_event" 2 740 "int8(int8 stream)" `590  "Enviroment Prototypes:"
+c L "get_capture_event" 2 5 2 "FUNCTION"
+v L "address" 2 753 "int16" `593 
+f B "goto_address" 2 753 "void(int16 address)" `592 
+v L "label" 2 754 "int16" `595 
+f B "label_address" 2 754 "int16(int16 label)" `594  "Program Memory Prototypes:"
+v L "address" 2 757 "int16" `597 
+v L "dataptr" 2 757 "*int8" `598 
+v L "count" 2 757 "int16" `599 
+f B "read_program_memory" 2 757 "void(int16 address,*int8 dataptr,int16 count)" `596 
+v L "address" 2 758 "int16" `601 
+f B "read_program_eeprom" 2 758 "int16(int16 address)" `600 
+v L "address" 2 759 "int16" `603 
+f B "erase_program_eepr

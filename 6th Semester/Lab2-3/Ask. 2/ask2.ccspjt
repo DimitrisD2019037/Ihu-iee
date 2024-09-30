@@ -1,0 +1,56 @@
+[Directories]
+Include=C:\Program Files\PICC\Devices\;C:\Program Files\PICC\Drivers\
+Library=
+LinkerScript=
+[defines]
+enabled=0
+chip=1
+D1=
+V1=
+[fileformats]
+forcecoff=1
+debug=4
+error=2
+object=0
+list=0
+scratch=0
+sta=1
+tre=1
+allerrors=1
+allwarnings=1
+stayupne=3
+stayupoe=0
+[PROJECT]
+Target=ask2.hex
+Development_Mode=
+Processor_Text=PIC18F4550
+ToolSuite=CCS
+CCSVersion=5.011
+Compiler=PCH
+[Target Data]
+BuildTool=C-COMPILER
+OptionString=+FH
+AdditionalOptionString=
+BuildRequired=1
+FileList=ask2.c
+[ask2.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[mru-list]
+1=ask2.c
+[Windows]
+0=0000 %S 0 0 796 451 3 0
+[CompilerVersion]
+Fixed=
+[Opened Files]
+1=ask2.c
+2=ask2.2
+3=
+[Units]
+Count=1
+1=ask2
+Link=0

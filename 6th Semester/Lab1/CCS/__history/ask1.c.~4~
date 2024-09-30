@@ -1,0 +1,9 @@
+#include <main-proteus.h> 
+#byte PORTB =0xF81
+
+void main(void){
+   set_tris_b(0x00); 
+   PORTB =0b11110000;  
+   while(TRUE) {  }   
+}               
+

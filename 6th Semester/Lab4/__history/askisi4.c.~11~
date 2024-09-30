@@ -1,0 +1,21 @@
+#include <18F4550.h>
+#DEVICE HIGH_INTS=TRUE
+#device adc=10
+
+#FUSES NOWDT                     //No Watch Dog Timer
+#FUSES WDT32768                    //Watch Dog Timer uses 1:128 Postscale
+#FUSES HSPLL                     //High Speed Crystal/Resonator with PLL enabled
+#FUSES NOPROTECT                 //Code not protected from reading
+#FUSES BROWNOUT                //No brownout reset
+//#FUSES BORV20                    //Brownout reset at 2.0V
+#FUSES NOPUT                     //No Power Up Timer
+#FUSES NOCPD                     //No EE protection
+#FUSES STVREN                    //Stack full/underflow will cause reset
+#FUSES NODEBUG                   //No Debug mode for ICD
+#FUSES NOLVP                     //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O
+#FUSES NOWRT                     //Program memory not write protected
+#FUSES NOWRTD                    //Data EEPROM not write protected
+#FUSES NOIESO                      //Internal External Switch Over mode enabled
+#FUSES NOFCMEN                     //Fail-safe clock monitor enabled
+#FUSES NOPBADEN                 ///PORTB pins are configured as analog input channels on RESET
+#FUSES NOWRTC                    //co

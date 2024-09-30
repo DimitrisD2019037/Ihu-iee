@@ -1,0 +1,18 @@
+#include <main-proteus.h> 
+#byte PORTB =0xF81 //??s? µ??µ?? t?? PORTB
+void main(void){
+   set_tris_b(0x00); //???sµ?? PORTB ?? ???d?? 
+   PORTB =0b11111111;  //???sµ?? t?µ?? st?? PORTB
+   while(TRUE) {     //??a p??ta                          
+      delay_ms(250);    //a?aµ??? 250ms
+       PORTB=0b00000000;  //LED sﬂ?st?
+       delay_ms(250);     //a?aµ??? 250ms
+       PORTB=0b00000100;  //LED a?aµµ??a     
+       delay_ms(10000);
+       PORTB=0b00000010;  //LED a?aµµ??a     
+       delay_ms(2000);
+       PORTB=0b00000001;  //LED a?aµµ??a     
+       delay_ms(10000);
+    }
+ }
+

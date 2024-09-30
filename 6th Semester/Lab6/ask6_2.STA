@@ -1,0 +1,50 @@
+
+ROM used:   358/32768 (1%)
+            362/32768 (1%) including unused fragments
+
+            0.4 Average locations per line
+            22.4 Average locations per statement
+
+RAM used:   34/2048 (2%) at main() level
+            35/2048 (2%) worst case
+
+Stack used: 2 worst case (1 in main + 1 for interrupts)
+Stack size: 31
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   76    16 100  ask6_2.c
+   68     0   0  main.h
+  821     0   0  C:\Program Files\PICC\Devices\18F4550.h
+----- -----
+  965    16 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     62   9    0    74  2.3  main
+0     30   4    0    33  1.3  timer0_int
+0     28   4    0   127  2.2  init
+0     76  11    1    57  3.0  mydelay_100us
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               4
+    Statements              16
+    Comments                183
+    Volume (V)              433
+    Difficulty (D)          8.7
+    Effort to implement (E) 3785
+    Time to implement (T)   4 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    81
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-007FE     0  2048  
+00800-00806     4  4  
+00808-008A4   158  0  
+008A6-07FFE   196  30358  
+
+
+

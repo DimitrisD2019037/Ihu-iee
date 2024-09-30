@@ -1,0 +1,125 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     counter
+018     seconds
+019     lcd_init.i
+019     @PSTRINGC_646.@SCRATCH1
+01A     lcd_init.@SCRATCH1
+01A     @PSTRINGC_646.@SCRATCH2
+024     @PSTRINGCN_646.P1
+024     @PRINTF_D_646.P2
+025     @PRINTF_D_646.P1
+025     @PSTRINGCN_646.@SCRATCH1
+026     @PSTRINGCN_646.@SCRATCH2
+026     @PRINTF_D_646.@SCRATCH1
+027     @PRINTF_D_646.@SCRATCH2
+028     @PRINTF_D_646.@SCRATCH3
+029     @PRINTF_D_646.@SCRATCH4
+02A     lcd_putc.c
+02A     @DIV88.P1
+02B     lcd_gotoxy.x
+02B     @delay_ms1.P1
+02B     @DIV88.P2
+02C     lcd_gotoxy.y
+02C     @DIV88.@SCRATCH1
+02D     lcd_gotoxy.address
+02E     lcd_gotoxy.@SCRATCH1
+02F     lcd_send_byte.address
+030     lcd_send_byte.n
+031     lcd_send_byte.@SCRATCH1
+032     lcd_send_nibble.nibble
+F81     PORTB
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+0008A6  LCD_INIT_STRING.call
+0008C6  LCD_INIT_STRING.data
+0008CA  @const658.call
+0008CC  lcd_send_nibble
+00091C  lcd_send_byte
+000958  lcd_gotoxy
+00097A  @delay_ms1
+0009A6  lcd_putc
+0009E8  @PSTRINGCN_646
+000A08  @DIV88
+000A30  @PRINTF_D_646
+000ADC  timer0_int
+000B18  @const660.call
+000B24  init
+000B46  lcd_init
+000C2A  @PSTRINGC_646
+000C62  MAIN
+000C62  @cinit1
+000C7C  @cinit2
+
+Project Directory:
+    E:\MIKRO-II\t8\
+
+Project Files:
+    ask3.c                                                  [15-Ìבת-23 12:15  CRC=FE8A3258]
+    main.h                                                  [15-Ìבת-23 12:03  CRC=0813682B]
+    C:\Program Files\PICC\Devices\18F4550.h                 [09-Áץד-13 15:40  CRC=A157EDDE]
+    flex_lcd.h                                              [15-Ìבת-23 12:03  CRC=8F074356]
+
+Source signature=C6040F0D
+
+Units:
+    ask3 (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   ask3.xsym
+    Errors:      ask3.err
+    Ext Symbols: ask3.esym
+    INHX32:      ask3.hex
+    Symbols:     ask3.sym
+    List:        ask3.lst
+    Debug/COFF:  ask3.cof
+    Project:     ask3.ccspjt
+    Call Tree:   ask3.tre
+    Statistics:  ask3.STA

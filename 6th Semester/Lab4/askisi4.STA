@@ -1,0 +1,39 @@
+ PLL5                      //Divide By 12(48MHz oscillator input) 
+.................... #FUSES CPUDIV1                   //System Clock by 2 
+.................... #FUSES USBDIV                    //USB clock source comes from PLL divide by 2 
+.................... #FUSES VREGEN                    //USB voltage regulator enabled 
+.................... #FUSES ICPRT                     //ICPRT enabled 
+.................... #FUSES WRTB 
+.................... #FUSES NOICPRT  
+.................... #FUSES NOLPT1OSC 
+.................... #FUSES CCP2B3  
+.................... #FUSES NOCPB 
+.................... #FUSES NOCPD 
+.................... #FUSES NOWRTC 
+.................... #FUSES NOWRTD 
+.................... #FUSES NOEBTR 
+.................... #FUSES NOEBTRB               
+....................  
+.................... /* systm clock is 48 MHz */ 
+.................... #use delay(clock=48000000,RESTART_WDT) 
+08A6:  CLRF   FEA
+08A8:  MOVLW  17
+08AA:  MOVWF  FE9
+08AC:  MOVF   FEF,W
+08AE:  BZ    08D0
+08B0:  MOVLW  0F
+08B2:  MOVWF  01
+08B4:  MOVLW  BF
+08B6:  MOVWF  00
+08B8:  CLRWDT
+08BA:  DECFSZ 00,F
+08BC:  BRA    08B8
+08BE:  DECFSZ 01,F
+08C0:  BRA    08B4
+08C2:  MOVLW  8F
+08C4:  MOVWF  00
+08C6:  DECFSZ 00,F
+08C8:  BRA    08C6
+08CA:  CLRWDT
+08CC:  DECFSZ FEF,F
+08CE:  BRA    08B
