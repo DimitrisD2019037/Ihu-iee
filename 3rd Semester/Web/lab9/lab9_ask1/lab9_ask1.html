@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var i = 0;
+        var img = new Array();
+
+        img[0] = 'a.jpg';
+        img[1] = 'b.png';
+        img[2] = 'c.jpg';
+
+        function nextPicture()
+        {
+            i++;
+
+            if(i == img.length)
+            {
+                i = 0;
+            }
+
+            document.getElementById('img').src = img[i];
+        }
+
+        function previousPicture()
+        {
+            i--;
+
+            if(i == -1)
+            {
+                i = img.length - 1;
+            }
+
+            document.getElementById('img').src = img[i];
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Previous" onclick="previousPicture()">
+    <input type="button" value="Next" onclick="nextPicture()">
+    </br>
+    <img id="img" src="a.jpg"/>
+</body>
+</html>

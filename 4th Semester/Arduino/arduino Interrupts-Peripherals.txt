@@ -1,0 +1,143 @@
+ask 1)
+
+
+void setup(){
+  pinMode(11, OUTPUT); //kano to pin 11/kokino output
+  pinMode(9, OUTPUT); //kano to pin 9/mple output
+  pinMode(6, OUTPUT); //kano to pin 6/prasino output
+  pinMode(2, INPUT); //kano to pin 2 input gia to koumpi
+  attachInterrupt(digitalPinToInterrupt(2),ColorChange,RISING); //dilono to pos tha xrisimopiso tin interrupt mou
+}
+
+boolean xroma; //dilono to xroma boolean gia na alazi apo true se false
+  
+void loop(){
+  if (xroma==true){
+   analogWrite(11,255); //kokino pin=255 gia na bgi to kitrino
+   analogWrite(9,0); //mple pin=0 gia na bgi to kitrino
+   analogWrite(6,255); //prasino pin=255 gia na bgi to kitrino
+  }
+  else if (xroma==false){  
+   analogWrite(11,168); //kokino pin=168 gia na bgi to mob
+   analogWrite(9,255); //mple pin=255 gia na bgi to mob
+   analogWrite(6,0);  //prasino pin=0 gia na bgi to mob
+  } 
+}
+  
+
+void ColorChange(){
+  xroma = !xroma; //alazo to xroma analoga me to ti itan tin proigoumeni fora
+} 
+
+
+
+----------------------------------------------------------------------------
+
+ask2)A)
+
+void setup(){
+  pinMode(11,OUTPUT); //kano to pin 11 output gia red
+  pinMode(10,OUTPUT); //kano to pin 10 output gia blue
+  pinMode(9,OUTPUT); //kano to pin 9 output gia green
+  pinMode(A0,INPUT); //kano to pin A0 input gia to thermometro
+  Serial.begin(9600); //arxikopio to serial signal?
+}
+
+float temp; //dilono temp san global gia na tin xrisimopioun oi sinartisis mou
+int currentMil=0; //dilonio metabliti gia ta current deftera
+int lastMil=0; //dilono metabliti gia tin teleftea timi Mil
+
+
+
+void loop(){
+  currentMil=millis(); //bazo to torino xrono stin currentMil
+  if (currentMil-lastMil>=2500){
+    lastMil=currentMil; //kano update to lastMil apo tin teleftea pou mpika
+    CalcTemp(); //kalo tin sinartisi CalcTemp gia na bro tin thermokrasia
+  }
+}
+
+
+float CalcTemp(){
+  float reading=analogRead(A0);
+  float voltage=(reading*5.0)/1024;
+  temp=(voltage-0.5)*100 ;
+  Serial.println(temp);
+  ChangeColor(temp); //kalo tin sinartisi ChangeColor gia na alakso to xroma simfona me to temp
+}
+
+
+void ChangeColor(float temp){
+  if (temp>=25){
+    analogWrite(11,255); //kokino pin=255 gia na bgi to kokino
+    analogWrite(10,0); //mple pin=0 gia na bgi to kokino
+    analogWrite(9,0); //prasino pin=0 gia na bgi to kokino
+  }else if(temp<=5){
+    analogWrite(11,0); //kokino pin=0 gia na bgi to mple
+    analogWrite(10,255); //mple pin=255 gia na bgi to mple
+    analogWrite(9,0); //prasino pin=0 gia na bgi to mple
+  }else{
+    analogWrite(11,255); //kokino pin=255 gia na bgi to kitrino
+    analogWrite(10,0); //mple pin=0 gia na bgi to kitrino
+    analogWrite(9,255); //prasino pin=255 gia na bgi to kitrino
+  }
+}
+
+
+----------------------------------------------------------------------------
+
+ask2)B)
+
+
+
+void setup(){
+  pinMode(11,OUTPUT); //kano to pin 11 output gia red
+  pinMode(10,OUTPUT); //kano to pin 10 output gia blue
+  pinMode(9,OUTPUT); //kano to pin 9 output gia green
+  pinMode(A0,INPUT); //kano to pin A0 input gia to thermometro
+  Serial.begin(9600); //arxikopio to serial signal?
+  pinMode(2,INPUT); //kano to pin 2 input gia to koumpi
+  attachInterrupt(digitalPinToInterrupt(2),CalcTempButton,RISING); //dilono to pos tha xrisimopiso tin interrupt mou
+}
+float temp; //dilono temp san global gia na tin xrisimopioun oi sinartisis mou
+int currentMil=0; //dilonio metabliti gia ta current deftera
+int lastMil=0; //dilono metabliti gia tin teleftea timi Mil
+
+
+void loop(){
+  currentMil=millis(); //bazo to torino xrono stin currentMil
+  if (currentMil-lastMil>=2500){
+    lastMil=currentMil; //kano update to lastMil apo tin teleftea pou mpika
+    CalcTemp(); //kalo tin sinartisi CalcTemp gia na bro tin thermokrasia
+  }
+  ChangeColor(); //kalo tin sinartisi ChangeColor gia na alakso to xroma simfona me to temp
+}
+
+
+float CalcTemp(){
+  float reading=analogRead(A0); //diabazo kai apothikebo to reading tou themometrou
+  float voltage=(reading*5.0)/1024; //kano tin timi tou themometrou volts
+  temp=(voltage-0.5)*100 ; //kano ta volts bathmous
+}
+
+void CalcTempButton(){
+  float reading=analogRead(A0); //diabazo kai apothikebo to reading tou themometrou
+  float voltage=(reading*5.0)/1024; //kano tin timi tou themometrou volts
+  temp=(voltage-0.5)*100 ; //kano ta volts bathmous
+}
+
+void ChangeColor(){
+  if (temp>25){
+    analogWrite(11,255); //kokino pin=255 gia na bgi to kokino
+    analogWrite(10,0); //mple pin=0 gia na bgi to kokino
+    analogWrite(9,0); //prasino pin=0 gia na bgi to kokino
+  }else if(temp<5){
+    analogWrite(11,0); //kokino pin=0 gia na bgi to mple
+    analogWrite(10,255); //mple pin=255 gia na bgi to mple
+    analogWrite(9,0); //prasino pin=0 gia na bgi to mple
+  }else{
+    analogWrite(11,255); //kokino pin=255 gia na bgi to kitrino
+    analogWrite(10,0); //mple pin=0 gia na bgi to kitrino
+    analogWrite(9,255); //prasino pin=255 gia na bgi to kitrino
+  }
+}

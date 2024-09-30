@@ -1,0 +1,83 @@
+....................1)
+
+void setup(){
+  pinMode(11, OUTPUT); //kano to pin 11/kokino outpout
+  pinMode(9, OUTPUT); //kano to pin 9/mple outpout
+  pinMode(6, OUTPUT); //kano to pin 6/prasino outpout
+  Serial.begin(9600); //bazo to default serial singal?
+}
+
+String xroma; //dilono ena string xroma gia apothikefsi apo to serial
+
+void loop(){
+  if (Serial.available() > 0){ //check an exoun dothi stixia sto serial
+    xroma = Serial.readString(); //an iparxoun balta stin metabliti xroma gia sigkrisi
+    if(xroma == "yellow"){ 
+       analogWrite(11,255); //kokino pin=255 gia na bgi to kitrino
+       analogWrite(9,0); //mple pin=0 gia na bgi to kitrino
+       analogWrite(6,255); //prasino pin=255 gia na bgi to kitrino
+    }else if(xroma == "purple"){
+       analogWrite(11,168); //kokino pin=168 gia na bgi to mob
+       analogWrite(9,255); //mple pin=255 gia na bgi to mob
+       analogWrite(6,0); //prasino pin=0 gia na bgi to mob
+    }else
+       Serial.println("Parakalo grapste i kitrino i mob"); //ama o xristis den edose oute kitrino oute mob
+  } 
+}
+
+
+
+
+
+
+....................2)
+
+void setup(){
+  pinMode(13,OUTPUT); //kanoume to led 13 output
+}
+
+
+void loop(){
+  digitalWrite(13,1); //anigoume to led
+  delay(500); //perimenoume 0.5sec
+  digitalWrite(13,0); // klinoume to led
+  delay(500); //perimenoume to led
+}
+
+
+
+
+
+
+....................3)
+
+void setup(){
+  pinMode(13,OUTPUT); //kanoume to pin 13 output
+  pinMode(8,OUTPUT); //kanoume to pin 8 output
+}
+
+
+int currentMillis = 0; //dilonoume k arxikopioume to currentmills
+int lastMillis = 0; //dilonoume k arxikopioume to lastmills
+int lastMillis2 = 0; //dilonoume k arxikopioume to lastmills2
+boolean state1 = false; //dilonoume k arxikopioume to state1
+boolean state2 = false; //dilonoume k arxikopioume to state2
+
+
+void loop(){
+
+ digitalWrite(13,state1); //anabo i klino to led analoga me tin timi tou state1
+ digitalWrite(8,state2); //anabo i klino to led analoga me tin timi tou state2
+ 
+ currentMillis = millis(); //bazo sto currentmiles ton xrono apo to millis
+  
+ if(currentMillis-lastMillis >= 300){ //sigkrinoume an exoun perasi 0.3sec apo tin teleftea fora
+   lastMillis = currentMillis;  //ananeonoume tin telefta fora pou mpikame
+   state1 = !state1; //alazo to state apo to proto ledaki(apo anixto klisto kai to anapodo)
+
+ }  
+ if(currentMillis-lastMillis2 >= 1000){ //sigkrinoume an exoun perasi 1sec apo tin teleftea fora
+   lastMillis2 = currentMillis; //ananeonoume tin telefta fora pou mpikame
+   state2 = !state2; //alazo to state apo to deftero ledaki(apo 0 se 1 kai to anapodo)
+ }
+}

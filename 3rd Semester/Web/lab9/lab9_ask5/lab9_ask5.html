@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFunction()
+        {
+            var text1 = document.getElementById('text1');
+            var compo1 = document.getElementById('compo1');
+
+            if(text1.value.length > 0)
+            {
+                option = document.createElement("option");
+                option.text = text1.value;
+                compo1.add(option);
+            }
+        }
+    </script>
+</head>
+<body>
+        <input id="text1" type="text">
+        <select id="compo1">
+            <option>Test 1</option>
+            <option>Test 2</option>
+        </select>
+        <input id="button1" type="button" value="Προσθήκη" onclick="myFunction()">
+</body>
+</html>

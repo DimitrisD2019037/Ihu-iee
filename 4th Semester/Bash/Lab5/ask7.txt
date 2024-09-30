@@ -1,0 +1,24 @@
+#!/bin/bash
+check(){
+	egrep "^[^:]*:$2" $1 | sort -k2n -t ':' > "$filename".txt
+	echo "File contents"
+	cat "$filename".txt
+	echo "there are `cat "$filename".txt | wc -l` pcs in class $2"
+}
+if [ $# -ne 2 ]; then
+	echo "Enter two arguments" 1>&2; exit 1;
+fi
+if [ ! -f $1 ]; then
+	echo "There is no such file" 1>&2; exit 2;
+fi
+
+filename="ip$2"
+
+egrep "^[^:]*:$2" $1 | sort -k2n -t ':' > "$filename".txt
+
+if [ -f "$filename.txt" ]; then
+	mv "$filename".txt "$filename".bak
+	check $1 $2
+else
+	check $1 $2
+fi

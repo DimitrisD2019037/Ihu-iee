@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function mouseOver()
+        {
+            document.getElementById("img1").src = "Bluehills.jpg";
+        }
+
+        function mouseOut()
+        {
+            document.getElementById("img1").src = "Sunset.jpg";
+        }
+
+        function mouseDown()
+        {
+            document.getElementById("img1").src = "ihu.png";
+        }
+    </script>
+</head>
+<body>
+    <image id="img1" src="Sunset.jpg" onmouseover="mouseOver()" onmouseout="mouseOut()" onmousedown="mouseDown()">
+
+</body>
+</html>

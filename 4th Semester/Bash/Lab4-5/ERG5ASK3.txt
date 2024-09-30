@@ -1,0 +1,58 @@
+#!/bin/bash
+
+#to $1 h parametros onoma toy katalogoy
+
+#----------------------------------------
+
+echo "Be sure you have given the absolute position of the directory you want this script to work"
+echo "------------------------------------------------------------------------------------------"
+cd "$1"
+
+if [ -d "dog" ] ; then
+	echo "Dog exists cant create another one"
+else 
+	mkdir dog
+fi
+
+if [ -d "cat" ] ; then
+	echo "Cat exists cant create another one"
+else 
+	mkdir cat
+fi
+
+numberof05=`ls -p | egrep -v / | egrep '\<[0-5]' |  wc -l`
+echo "The number of files starting with 0-5 :$numberof05"
+
+numberof69=`ls -p | egrep -v / | egrep '\<[6-9]' | wc -l`
+echo "The number of files starting with 6-9 :$numberof69"
+
+i=0
+
+while [ "$i" -lt "$numberof05" ]; do
+	target=`ls -p | egrep -v / | egrep '\<[0-5]' | head -1`
+	echo "AThe target is "$target" in cycle :$i"
+	if [ -n "$target" ]; then
+		mv "$target" "$1"/dog
+	else
+		echo "Exoyme problhma" 
+	fi
+	i=$((i+1))
+done
+
+i=0
+
+while [ "$i" -lt "$numberof69" ]; do
+	target=`ls -p | egrep -v / | egrep '\<[6-9]' | head -1`
+	echo "BThe target is :$target in cycle :$i"
+	if [ -n "$target" ]; then
+		mv "$target" "$1"/cat
+	else 
+		echo "Exoyme problhma" 
+	fi
+	i=$((i+1))
+done
+
+incat=`ls cat | wc -l`
+indog=`ls dog | wc -l`
+total=`expr "$incat" + "$indog"`
+echo "The number of files in cat and dog are : $total"

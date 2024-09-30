@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ] ; then
+	echo "Wrong number of args." 1>&2
+	echo "You must give 1 arg" 1>&2; exit 1;
+fi
+
+if [ ! -f "$1" ] ; then 
+	echo "$1 is not a file." 1>&2; exit 2;
+fi
+
+lines=`cat "$1" | wc -l`
+sum=0
+numbers=`cat "$1" | cut -d ':' -f3 | awk '{ sum+=$1} END {print sum}'`
+echo "$numbers"

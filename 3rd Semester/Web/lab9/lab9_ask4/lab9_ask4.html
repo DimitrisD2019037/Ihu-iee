@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFunction()
+        {
+            var output = document.getElementById('output');
+            var button1 = document.getElementById('button1');
+
+            if(button1.value == "Εμφάνιση")
+            {
+                for(var i = 0; i < document.images.length; i++)
+                {
+                    output.innerHTML += document.images[i].src + "</br>";
+                }
+                button1.value = "Εξαφάνιση";
+            }
+            else
+            {
+                output.innerHTML = " ";
+                button1.value = "Εμφάνιση";
+            }
+        }
+    </script>
+</head>
+<body>
+        <input id="button1" type="button" value="Εμφάνιση" onclick="myFunction()">
+        <div id="output"></div>
+        <img src="a.jpg">
+        <img src="b.png">
+        <img src="c.jpg">
+</body>
+</html>

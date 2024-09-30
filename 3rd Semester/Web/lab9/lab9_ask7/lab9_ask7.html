@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFunction()
+        {
+            var select = document.getElementById('s').selectedIndex;
+            var button = document.getElementById('button1');
+
+            if(button.value == "Χρωματισμός")
+            {
+                button.value = "Αποχρωματισμός";
+
+                if(select == "0")
+                {
+                    var j = document.getElementsByTagName("h1");
+
+                    for(var i = 0; i < j.length; i++)
+                    {
+                        j[i].style.backgroundColor = "yellow";
+                    }
+                }
+                else
+                {
+                    var j = document.getElementsByTagName("h2");
+
+                    for(var i = 0; i < j.length; i++)
+                    {
+                        j[i].style.backgroundColor = "yellow";
+                    }
+                }
+            }
+            else
+            {
+                button.value = "Χρωματισμός";
+
+                if(select == "0")
+                {
+                    var j = document.getElementsByTagName("h1");
+
+                    for(var i = 0; i < j.length; i++)
+                    {
+                        j[i].style.backgroundColor = "white";
+                    }
+
+                }
+
+                else
+                {
+                    var j = document.getElementsByTagName("h2");
+
+                    for(var i = 0; i < j.length; i++)
+                    {
+                        j[i].style.backgroundColor = "white";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <select id="s">
+        <option>1ο επίπεδο</option>
+        <option>2ο επίπεδο</option>
+    </select>
+    <input id="button1" type="button" value="Χρωματισμός" onclick="myFunction()">
+    <h1>This a heading h1</h1>    
+    <h2>This is a heading h2</h2>
+    <h1>This a heading h1</h1>
+    <h2>This is a heading h2</h2>
+    <h1>This a heading h1</h1>
+    <h2>This is a heading h2</h2>
+</body>
+</html>

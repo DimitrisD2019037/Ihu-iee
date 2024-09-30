@@ -1,0 +1,9 @@
+#!/bin/bash
+file="$1"
+
+while read a;do
+	IFS=":"
+	set $a
+	echo "Username: $1"
+	echo "home directory: $6"
+done < "$file"

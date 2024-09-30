@@ -1,0 +1,48 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body 
+{
+  padding-top: 3.5rem;
+}
+.img-div
+{
+  background-image: url(background-img.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 50%;
+  padding-top: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  color:white;
+}
+.nietzscheImg-div
+{
+  background-image: url(nietzsche.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 50%;
+  padding-top: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  color:white;
+}
+.diogenesImg-div
+{
+  background-image: url(diogenes.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 50%;
+  padding-top: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  color:white;
+}
+.Content-div
+{
+  padding-top: 13%;
+}

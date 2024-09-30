@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if (($#!=1)); then
+	echo "You need to give one parameter" 1>$2
+fi
+
+for ((i=1;i<=50;i++); do
+	fileName="$1.$i"
+	touch "$fileName"
+done

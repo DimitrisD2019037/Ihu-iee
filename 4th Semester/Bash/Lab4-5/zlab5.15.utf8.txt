@@ -1,0 +1,54 @@
+#!/bin/bash
+
+if (($#==0 || $#>4 )); then
+	echo "Usage: $0 [-topip4] [-topip6] [-topurl] FILE" 1>&2
+	exit 1
+fi
+topip4=0
+topip6=0
+topurl=0
+file=''
+for i in "$@"; do
+	case "$i" in
+		-topip4) topip4=1;;
+		-topip6) topip6=1;;
+		-topurl) topurl=1;;
+		-*) echo "Uknown flag $i" 1>&2; exit 2;;
+		*) file="$i";;
+	esac
+done
+if [ "$file" = '' ] ; then
+	echo "Usage: $0 [-topip4] [-topip6] [-topurl] FILE" 1>&2
+	exit 1
+fi
+if [ ! -f "$file" ] ;then 
+	echo "$file not exists" 1>&2
+	exit 2
+fi
+if ((topip4==0 && topip6==0 && topurl==0)); then
+	topip4=1
+	topip6=1
+	topurl=1
+fi	
+
+if ((topip4==1)); then
+	echo -n "Top IP4: "
+	cut -d' '  -f1 "$file" | grep '\.'|sort|uniq -c|sort -n | tail -1 | sed 's/.* //'
+	# Αντί της sed 's/.* //' η οποία κρατάει την τελευταία λέξη από την γραμμή είσόδου
+	# μπορώ να χρησιμοποιήσω την
+	# tr -s ' ' | cut -d' ' -f3
+fi
+if ((topip6==1)); then
+	echo -n "Top IP6: "
+	cut -d' '  -f1 "$file" | grep ':'|sort|uniq -c|sort -n | tail -1 | sed 's/.* //'
+	# Αντί της sed 's/.* //' η οποία κρατάει την τελευταία λέξη από την γραμμή είσόδου
+	# μπορώ να χρησιμοποιήσω την
+	# tr -s ' ' | cut -d' ' -f3
+fi
+if ((topurl==1)); then
+	echo -n "Top URL: "
+	cut -d' '  -f7 "$file" | sort|uniq -c|sort -n | tail -1 | sed 's/.* //'
+	# Αντί της sed 's/.* //' η οποία κρατάει την τελευταία λέξη από την γραμμή είσόδου
+	# μπορώ να χρησιμοποιήσω την
+	# tr -s ' ' | cut -d' ' -f3
+fi

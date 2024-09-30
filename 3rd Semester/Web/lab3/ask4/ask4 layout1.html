@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HTML Div Layout</title>
+    <style>
+        /* style for the "body" tag */
+        body {
+            font: 12px Arial,sans-serif;
+            margin: 0px;
+        }
+       
+        /* style for the CSS class "container" */
+        .container {
+            background: white;
+            width: 100%;
+        }
+       
+        /* style for the HTML5 tag "header" */
+        header {
+            background: #667BB4;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+       
+        /* style for the "h1" tag used inside an HTML5 "header" element  */
+        header h1 {
+            color: yellow;
+            font-size: 24px;
+        }
+       
+        /* style for the HTML5 tag "nav" */
+        nav {           
+            background: #DA251C;
+            width: 20%;            
+        }
+       
+        /* style for the HTML5 tag "section" */
+        section {
+            background: #BAB3D5;
+            width: 80%;
+        }
+       
+        /* style that applies to both HTML5 elements "nav" and "section" */
+        nav, section {
+            float: left;
+            padding: 20px;
+            min-height: 170px;
+            box-sizing: border-box;
+        }
+       
+        /* style for the "h2" tag used inside an HTML5 "section" element */
+        section h2 {
+            color: white;
+            font-size: 20px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>1. Header Frame (header)</h1>
+        </header>
+        <div>
+            <nav>
+                <p>2. Left Frame (nav)</p>
+            </nav>
+            <section>
+                <h2>3. Center Frame</h2>
+                <p>Lorem ipsum dolor sit amet</p>
+            </section>
+        </div>
+        
+    </div>
+</body>
+</html>     

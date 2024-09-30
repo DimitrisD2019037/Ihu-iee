@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ $# -ne 1 ]; then
+	echo "Enter only one parameter"; 1>&2; exit 1;
+fi
+
+if [ ! -f $1 ]; then
+        echo "The parameter should be a file"; 1>&2; exit 1;
+fi
+
+cat $1 | tr [:lower:] [:upper:]
+exit 0;

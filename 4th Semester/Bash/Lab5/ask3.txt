@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if (($#!=1)); then
+	echo "You need to give one parameter." 1>&2
+fi
+
+[ -d $1 ]
+
+if (($?>0)); then
+	echo "The parameter you gave is not a directory" 1>&2
+fi
+
+for ((i=1;i<=2;i++)); do
+	mkdir "$1/fakelos$i"
+done
+for i in $1/*; do
+	if [ -f $i ]; then
+		case "$i" in 
+			"$1"/[0-5]*) mv "$i" "$1/fakelos1" ;;
+			"$1"/[6-9]*) mv "$i" "$1/fakelos2" ;;
+			*) ;;
+		esac
+	fi
+done	

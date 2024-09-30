@@ -1,0 +1,12 @@
+#!/bin/bash
+	
+if (( $#!=1)); then
+	echo "Usage: $0 prefix" 1>&2
+	exit 1	
+fi
+
+prefix="$1"
+	
+for ((i=1;i<51;i++));do
+	echo "$prefix.$i"
+done

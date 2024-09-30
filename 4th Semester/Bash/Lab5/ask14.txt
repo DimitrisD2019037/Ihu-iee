@@ -1,0 +1,13 @@
+#!/bin/bash
+file=`host "$1"`
+flag=`echo "$file" | cut -d '' -f3`
+echo="$flag"
+if [ "$flag" = "not" ]; then
+	echo "-"
+	exit 1;
+fi
+if [ ! -f $1 ]; then
+        echo "There is no such file" 1>&2; exit 2;
+else
+	echo "$file" | cut -d ' ' -f5
+fi

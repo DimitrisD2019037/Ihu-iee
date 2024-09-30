@@ -1,0 +1,68 @@
+#!/bin/bash
+
+if (($#==0 || $#>6 )); then
+	echo "Usage: $0 [-topip4] [-topip6] [-topurl] FILE" 1>&2
+	exit 1
+fi
+topip4=0
+topip6=0
+topurl=0
+file=''
+totalsize=0
+daily=0
+for i in "$@"; do
+	case "$i" in
+		-topip4) topip4=1;;
+		-topip6) topip6=1;;
+		-topurl) topurl=1;;
+		-totalsize) totalsize=1;;
+		-daily) daily=1;;
+		-*) echo "Uknown flag $i" 1>&2; exit 2;;
+		*) file="$i";;
+	esac
+done
+
+if [ "$file" = '' ] ; then
+	echo "Usage: $0 [-topip4] [-topip6] [-topurl] FILE" 1>&2
+	exit 1
+fi
+if [ ! -f "$file" ] ;then 
+	echo "$file not exists" 1>&2
+	exit 2
+fi
+echo "file=$file, topip4=$topip4, topip6=$topip6, topurl=$topurl"
+
+
+if (( topip4==1 )); then
+	cut -d' ' -f1 "$file"  | egrep '\.'  | sort | uniq -c | sort -nr  | head -1
+fi
+if (( topip6==1 )); then
+	cut -d' ' -f1 "$file"  | egrep ':'  | sort | uniq -c | sort -nr  | head -1
+fi
+if (( topurl==1 )); then
+	cut -f7 -d' ' "$file"  | sort | uniq -c | sort -n | tail -1
+fi
+
+
+
+if (( totalsize ==1 )); then
+	cut -f10 -d' ' "$file" > tmp.tmp
+	s=0
+	while read b; do
+		((s+=b))
+	done<tmp.tmp
+	echo "total size=$s"
+fi
+
+if (( totalsize ==1 )); then
+	s=0
+	for b in $(cut -f10 -d' ' "$file") ; do
+		((s+=b))
+	done
+	echo "total size=$s"
+fi
+
+
+if (( daily ==1 )); then
+	cut -f4 -d' ' z_lab2012-03 | cut -d: -f1 | tr -d '[' | sort | uniq -c | sort -n
+fi

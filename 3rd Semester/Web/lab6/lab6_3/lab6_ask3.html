@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function changeImg(obj)
+        {
+            var image = obj;
+            image.src = "Sunset.jpg";
+            console.log(obj);
+        }
+
+        function changeImgBack(obj)
+        {
+            var image = obj;
+            image.src = "Bluehills.jpg";
+            console.log(obj);
+        }
+    </script>
+</head>
+<body>
+         <img id="eikona1" src="Bluehills.jpg" onmouseenter="changeImg(this)" onmouseleave="changeImgBack(this)"><br>
+         <img id="eikona2" src="Bluehills.jpg" onmouseenter="changeImg(this)" onmouseleave="changeImgBack(this)"><br>
+</body>
+</html>

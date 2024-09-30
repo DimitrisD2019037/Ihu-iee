@@ -1,0 +1,137 @@
+ask3-lyseis
+base regex: egrep '^[[:alpha:]]+, [[:alpha:]]+, [0-9]{1}-[0-9]{4}$' ask3
+
+1.
+aplo: egrep '1$' ask3
+spaghetti: egrep '^[[:alpha:]]+, [[:alpha:]]+, [0-9]{1}-[0-9]{3}1$' ask3
+
+2.
+aplo: egrep '5-.{3}1' ask3
+aplo premium: egrep '5-[0-9]{3}1$' ask3
+spaghetti: egrep '^[[:alpha:]]+, [[:alpha:]]+, 5-[0-9]{3}1$' ask3
+
+3.
+aplo: egrep '.*, [JW]{1,}' ask3
+aplo+: egrep '^[[:alpha:]]*, [JW]{1,}' ask3
+aplo premium: egrep '^[[:alpha:]]+, [JW]{1,}' ask3
+spaghetti: egrep '^[[:alpha:]]+, [J|W]+[[:alpha:]]*, [0-9]{1}-[0-9]{4}$' ask3
+
+4.
+aplo: egrep '^.{4}, [[:alpha:]]' ask3
+aplo+: egrep '^[[:alpha:]]{4},' ask3
+spaghetti: egrep '^[[:alpha:]]{4}, [[:alpha:]]+, [0-9]{1}-[0-9]{4}$' ask3
+
+5.
+aplo: egrep '^[^jwJW]*$' ask3
+
+6.
+aplo: egrep '^[M-Z]{1,}' ask3
+
+7.
+spaghet: egrep '^[M-Z]{1}[[:alpha:]]{0,}, [[:alpha:]]{1,}, [0-9]{1}-[0-9]{3}[1|2]$' ask3
+
+ask8-lyseis
+1. egrep 'file2' ~asidirop/public/OSIntro/Lab5_files/*
+2. egrep '.{50,}' ~asidirop/public/OSIntro/Lab5_files/*
+3. egrep -l '.{50,}' ~asidirop/public/OSIntro/Lab5_files/*
+4. egrep '.*(.....).*\1.*' ~asidirop/public/OSIntro/Lab5_files/*
+5. egrep -l '[0-9]+' ~asidirop/public/OSIntro/Lab5_files/*txt
+
+filep
+a
+hellohello
+goodbye
+friend how hello
+there how are you how are you
+ab
+bb
+aaa
+lll
+Parameters
+param
+
+ask4-lyseis
+1. egrep 'a?' filep
+        a
+        hellohello
+        goodbye
+        friend how hello
+        there how are you how are you
+        ab
+        bb
+        aaa
+        lll
+        Parameters
+        param
+
+2. egrep '(a|b)+' filep
+        a
+        goodbye
+        there how are you how are you
+        ab
+        bb
+        aaa
+        Parameters
+        param
+
+3. egrep '[ab]+' filep
+        a
+        goodbye
+        there how are you how are you
+        ab
+        bb
+        aaa
+        Parameters
+        param
+
+4. egrep '.{2}' filep
+        hellohello
+        goodbye
+        friend how hello
+        there how are you how are you
+        ab
+        bb
+        aaa
+        lll
+        Parameters
+        param
+
+5. egrep '.{2,}' filep
+        hellohello
+        goodbye
+        friend how hello
+        there how are you how are you
+        ab
+        bb
+        aaa
+        lll
+        Parameters
+        param
+
+6. egrep '(.)\1' filep
+        hellohello
+        goodbye
+        friend how hello
+        bb
+        aaa
+        lll
+
+7. egrep '(.).*\1' filep
+        hellohello
+        goodbye
+        friend how hello
+        there how are you how are you
+        bb
+        aaa
+        lll
+        Parameters
+        param
+
+8. egrep '(..).*\1' filep
+        hellohello
+        friend how hello
+        there how are you how are you
+
+9. egrep '(.{3}).*\1' filep
+        hellohello
+        there how are you how are you

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var array = document.getElementsByTagName("A");
+
+        function addEvent()
+        {
+            for(var i = 0; i < array.length; i++)
+            {
+                array[i].onclick = function safeLink()
+                {
+                    return confirm("Are you sure you want to open this tab?");
+                }
+
+            }
+        }
+    </script>
+</head>
+<body onload="addEvent()">
+    <a href="https://www.ihu.gr/">IHU</a>
+    </br>
+    <a href="https://www.iee.ihu.gr/">IEE</a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFunction()
+        {
+            for(var i = 0; i < document.links.length; i++)
+            {
+                if(window.location.hostname == document.links[i].hostname)
+                {
+                    document.links[i].style.backgroundColor = "green";
+                }
+                else
+                {
+                    document.links[i].style.backgroundColor = "red";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+        <a href="https://www.ihu.gr/">IHU</a> </br>
+        <a href="https://www.iee.ihu.gr/">IEE</a> </br>
+        <a href="lab9_ask1.html">Lab 9 askisi 1</a> </br>
+        <a href="lab9_ask2.html">Lab 9 askisi 2</a> </br>
+        </br>
+        <input type="button" value="Color" onclick="myFunction()">
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var i = 0;
+        var img = new Array();
+        var timer;
+
+        img[0] = 'a.jpg';
+        img[1] = 'b.png';
+        img[2] = 'c.jpg';
+        
+        function nextPicture()
+        {
+            i++;
+
+            if(i == img.length)
+            {
+                i = 0;
+            }
+
+            document.getElementById('img').src = img[i];
+        }
+
+        function startSlide()
+            {
+                timer = setInterval(nextPicture, 1000);
+            }
+
+        function stopSlide()
+            {
+                clearInterval(timer);
+            }
+    </script>
+</head>
+<body>
+    <input type="button" value="Start" onclick="startSlide()">
+    <input type="button" value="Stop" onclick="stopSlide()">
+    </br>
+    <img id="img" src="a.jpg"/>
+</body>
+</html>

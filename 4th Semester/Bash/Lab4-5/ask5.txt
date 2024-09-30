@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ $# -eq 2 ]; then
+	if [ -d $1 ]; then
+		echo "Directory Found"
+		result=`ls -l $1/*$2 | egrep '^-[^r]*r[^r]*r[^r]*'`
+			if [ $? -eq 0 ]; then
+				echo "$result"
+				echo "Number of files: `echo "$result" | wc -l`"
+			else
+				echo "There are no such files in this directory" 1>&2;
+			fi
+	else 
+		echo "There is no such directory" 1>&2;
+	fi
+else
+	echo "Please give two parameters" 1>&2;
+fi

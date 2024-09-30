@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function AddNums()
+        {
+            var t1 = document.getElementById("txt1");
+            var t2 = document.getElementById("txt2");
+            var sum = parseInt(t1.value) + parseInt(t2.value);
+            if (sum<1000)
+                t2.value=sum;
+            else
+                window.alert("Over 1000");
+
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="txt1" value="0">
+    <br/>
+    <button onclick="AddNums()">Add Nums</button>
+    <br/>
+    <input type="text2" id="txt2" value="0">
+</body>
+</html>

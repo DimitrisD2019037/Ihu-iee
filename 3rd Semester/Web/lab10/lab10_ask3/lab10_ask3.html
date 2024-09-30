@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var array = document.getElementsByTagName("P");
+
+        function createOptions()
+        {
+            for(var i = 0; i < array.length; i++)
+            {
+                var option = document.createElement("OPTION");
+
+                document.getElementById("compo").add(option);
+                option.innerHTML = array[i].innerHTML.substring(0, 49);
+            }
+        }
+
+        function move()
+        {
+            for(var i = 0; i < array.length; i++)
+            {
+                array[i].style.fontWeight = "normal";
+            }
+
+            array[document.getElementById("compo").selectedIndex].style.fontWeight = "bold";
+            array[document.getElementById("compo").selectedIndex].scrollIntoView(true);
+        }
+    </script>
+</head>
+<body onload="createOptions()">
+    <select id="compo" onchange="move()"></select>
+
+        <p>Το Τμήμα «Μηχανικών Πληροφορικής και Ηλεκτρονικών Συστημάτων» του Διεθνούς Πανεπιστημίου της Ελλάδος 
+            (ΔΙ.ΠΑ.Ε) προήλθε από την συνένωση των τμημάτων «Μηχανικών Πληροφορικής» και «Ηλεκτρονικών Μηχανικών» 
+            την άνοιξη του 2019 και υποδέχεται πρωτοετείς φοιτητές από το Σεπτέμβριο του 2019.</p>
+        </br>
+
+        <p>Οι εγκαταστάσεις του Τμήματος στη Σίνδο Θεσσαλονίκης,
+            περιλαμβάνουν 9 αίθουσες θεωρητικής διδασκαλίας, 2 αμφιθέατρα 
+            και 20 αίθουσες εργαστηρίων με σύγχρονο και κατάλληλο εξοπλισμό.</p>
+        </br>
+
+        <p>Το Τμήμα είναι άρτια στελεχωμένο καθώς το διδακτικό του προσωπικό 
+         αποτελείται από 30 μέλη ΔΕΠ και 6 μέλη ΕΔΙΠ και συγκαταλέγεται 
+        ανάμεσα στα μεγαλύτερα του ΔΙ.ΠΑ.Ε.</p>
+        </br>
+
+        <p>Η  διάρκεια του πρώτου κύκλου σπουδών του Τμήματος έχει οριστεί σε δέκα (10) ακαδημαϊκά εξάμηνα 
+            σύμφωνα με το ΦΕΚ 2657/1-7-2019/τ.Β και η εφαρμογή του αντίστοιχου Προγράμματος Προπτυχιακών Σπουδών 
+            ορίζεται από το ακαδημαϊκό έτος 2019-20. Το Μάιο 2020 εγκρίθηκε ομόφωνα από την 10η/12-5-2020 
+            Συνέλευση η εισήγηση για υπαγωγή του Προγράμματος Προπτυχιακών Σπουδών του Τμήματος στην “Απονομή ενιαίου 
+            και αδιάσπαστου τίτλου σπουδών μεταπτυχιακού επιπέδου (Integrated Master)” σύμφωνα με το άρθρο 46 του ν. 4485/2017.</p>
+        </br>
+</body>
+</html>

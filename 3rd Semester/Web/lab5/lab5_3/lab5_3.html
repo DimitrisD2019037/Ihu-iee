@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function resize()
+        {
+            textBox1 = document.getElementById('text1');
+            textBox2 = document.getElementById('text2');
+            var textBox3 = document.getElementById('text3');
+            newWindow = window.open(textBox3.value, '', 'width=200, height=200, menubar=no, location=no');
+            newWindow.resizeTo(textBox1.value, textBox2.value);
+            newWindow.focus();
+        }
+    </script>
+</head>
+<body>
+    <form>
+        Enter Width:
+        <input type="text" id="text1">
+        </br>
+        Enter Height:
+        <input type="text" id="text2">
+        </br>
+        Enter url:
+        <input type="text" id="text3">
+        </br>
+        <input type="button" value="Create" onclick="resize()">
+    </form>
+</body>
+</html>

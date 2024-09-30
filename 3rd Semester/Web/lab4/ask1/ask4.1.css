@@ -1,0 +1,20 @@
+
+        body 
+        {
+            background-color:darkcyan;
+            background-image: url("img_tree.png");
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+     .header h2
+     {
+        font: 12px Arial,sans-serif;
+     }
+     div.content
+     {
+         float: right;
+         background:skyblue;
+         width: 80%;
+     }
+            
+   

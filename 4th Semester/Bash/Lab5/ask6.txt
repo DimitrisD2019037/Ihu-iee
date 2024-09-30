@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ $# -ne 1 ]; then
+	echo "Enter only one argument" 1>&2; exit 1;
+fi
+if [ ! -d $1 ]; then
+	        echo "There is no such directory" 1>&2; exit 2;
+fi
+
+dir="$1"
+flag=0
+
+for file in "$dir/"*; do
+	if test -f $file ; then
+		file $file
+		flag=1
+	fi
+done
+
+if [ $flag -eq 0 ]; then
+	echo "No files founded in the directory $1" 1>&2;
+fi

@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $# -ne 0 ]; then
+	echo "No arguments needed"; exit 1;
+fi
+
+last -w | cut -f1 -d ' ' | grep -v wtmp | grep -v ^$ | sort | uniq -c | sort -n

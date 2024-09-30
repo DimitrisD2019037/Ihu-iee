@@ -1,0 +1,13 @@
+#!/bin/bash
+if [ $# -ne 1 ]; then
+	echo "Enter one parameter" 1>&2; exit 1;
+fi
+if [ ! -f $1 ]; then
+        echo "There is no such file" 1>&2; exit 2;
+fi
+echo "13_a"
+cut -d ':' -f3 $1
+echo "13_b"
+cut -d ':' -f3 $1 | sort | uniq -c
+echo "13_c"
+cut -d ':' -f3 $1 | sort | uniq -c | sort -nr
